@@ -1,0 +1,218 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hospital Management System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Patients List</h2>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+        <a class="btn btn-success" href="/doctor">Doctors</a>
+         <a class="btn btn-success" href="/bill">Bills</a>
+
+    <table class="table table-striped" id="mytable">
+      <thead>
+        <tr>
+          <th>Patient Id</th>
+          <th>Patient Name</th>
+          <th>Patient DOB</th>
+          <th>Patient Gender</th>
+        </tr>
+      </thead>
+      
+      
+         {{#each results}}
+        <tr>
+                      <td><a href="/patientdetails{{ Patient_id }}">{{ Patient_id }}</a></td>
+
+          <td>{{ Patient_id }}</td>
+          <td>{{ Patient_name }}</td>
+          <td>{{ Patient_DOB }}</td>
+          <td>{{ Patient_gender }}</td>
+          <td>
+            
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ Patient_id }}"data-patient_dob="{{ Patient_DOB }}" data-patient_name="{{ Patient_name }}" 
+            data-patient_gender="{{ Patient_gender }}" data-patient_address="{{ Patient_address }}" data-contact1="{{ contact_number1 }}" data-contact2="{{ contact_number2}}" data-disease="{{ Disease}}" data-weight="{{ patient_weight }}" data-age="{{ Patient_age }}">Edit</a>
+
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ Patient_id }}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <button onclick="window.print()">Print this page</button>
+  </div>
+  
+    <!-- Modal Add Patient-->
+      <form action="/save" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Patient</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <div class="form-group">
+                   <input type="text" name="Patient_id" class="form-control" placeholder="Patient Id" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_name" class="form-control" placeholder="Patient Name" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_dob" class="form-control" placeholder="Patient DOB" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_gender" class="form-control" placeholder="Patient Gender" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_address" class="form-control" placeholder="Patient Address" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="contact_number1" class="form-control" placeholder="Contact Number1" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="contact_number2" class="form-control" placeholder="Contact Number2" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="Disease" class="form-control" placeholder="Disease" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_weight" class="form-control" placeholder="Patient Weight" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="Patient_age" class="form-control" placeholder="Patient Age" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+        <!-- Modal Update Product-->
+   <form action="/update" method="post">
+       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Patient</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="Patient_id" class="form-control Patient_id" placeholder="Patient Id" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_name" class="form-control patient_name" placeholder="Patient Name" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_dob" class="form-control Patient_DOB" placeholder="Patient DOB" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_gender" class="form-control Patient_gender" placeholder="Patient Gender" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_address" class="form-control Patient_address" placeholder="Patient Address" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="contact_number1" class="form-control Contact_Number1" placeholder="Contact Number1" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="contact_number2" class="form-control Contact_Number2" placeholder="Contact Number2" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="Disease" class="form-control Disease" placeholder="Disease" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="patient_weight" class="form-control Weight" placeholder="Patient Weight" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="Patient_age" class="form-control Age" placeholder="Patient Age" required>
+               </div>
+             </div>
+            <div class="modal-footer">
+              <input type="hidden" name="id" class="product_id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+  </form>
+    
+      <!-- Modal Delete Product-->
+      <form id="add-row-form" action="/delete" method="post">
+         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="myModalLabel">Delete Patient</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   </div>
+                   <div class="modal-body">
+                        <strong>Are you sure to delete this data?</strong>
+                   </div>
+                   <div class="modal-footer">
+                        <input type="hidden" name="Patient_id" class="form-control Patient_id" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                   </div>
+                    </div>
+            </div>
+         </div>
+     </form>
+
+<script>
+    $(document).ready(function(){
+            //showing data to edit modal   
+        $('#mytable').on('click','.edit',function(){
+
+        var Patient_DOB = $(this).data('patient_dob');
+        var Patient_id = $(this).data('id');
+        var Patient_name = $(this).data('patient_name');
+        var Patient_gender = $(this).data('patient_gender');
+        var Patient_address = $(this).data('patient_address');
+        var Contact_number1 = $(this).data('contact1');
+        var Contact_number2 = $(this).data('contact2');
+        var Disease = $(this).data('disease');
+        var Weight = $(this).data('weight');
+        var Age = $(this).data('age');
+        
+        $('#EditModal').modal('show');     
+        $('.Patient_id').val(Patient_id); 
+        $('.patient_name').val(Patient_name);  
+        $('.Patient_DOB').val(Patient_DOB);    
+        $('.Patient_gender').val(Patient_gender); 
+        $('.Patient_address').val(Patient_address); 
+        $('.Contact_Number1').val(Contact_number1);
+        $('.Contact_Number2').val(Contact_number2);
+        $('.Disease').val(Disease);
+        $('.Weight').val(Weight);
+        $('.Age').val(Age);
+  
+      });
+            //showing delete record modal
+        $('#mytable').on('click','.delete',function(){
+        var Patient_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.Patient_id').val(Patient_id);
+      });
+ 
+    });
+</script>
+
+
+</body>
+</html>

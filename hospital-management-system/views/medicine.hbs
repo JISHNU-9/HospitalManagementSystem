@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hospital Management System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Available Medicine</h2>
+        
+        <a class="btn btn-success" href="/">Home</a>
+         
+
+    <table class="table table-striped" id="mytable">
+      <thead>
+        <tr>
+          <th>Medicine ID</th>
+          <th>Medicine Name</th>
+          <th>Medicine Type</th>
+          <th>Cost per unit</th>
+
+        </tr>
+      </thead>
+      
+      
+         {{#each results}}
+        <tr>
+          <td>{{ Med_id}}</td>
+          <td>{{ Med_name }}</td>
+          <td>{{  Med_type}}</td>
+          <td>{{ Med_unit_rate }}</td>
+          
+          <td>
+            
+            
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+          
+
+    </table>
+    <button onclick="window.print()">Print this page</button>
+  </div>
+
+
+  

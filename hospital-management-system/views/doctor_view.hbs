@@ -1,0 +1,225 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hospital Management System</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Doctors List</h2>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+        <a class="btn btn-success" href="/">Patients</a>
+
+    <table class="table table-striped" id="mytable">
+      <thead>
+        <tr>
+          <th>Doctor ID</th>
+          <th>Doctor Name</th>
+
+
+          <th>Specialication</th>
+          <th>Doctor Category</th>
+          
+        </tr>
+      </thead>
+      
+      
+         {{#each results}}
+        <tr>
+          <td>{{ Doctor_id }}</td>
+          <td>{{ Employee_name }}</td>
+
+
+          <td>{{ Specialization }}</td>
+          <td>{{ Doctor_category }}</td>
+          <td>
+            
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ Doctor_id }}"data-specialization="{{ Specialization }}" data-doctor_category="{{ Doctor_category }}" 
+                 data-employee_name="{{Employee_name}}" data-email_id="{{Email_id}}" data-number1="{{contact_number1}}" data-number2="{{contact_number2}}" data-salary="{{Salary}}" data-dob="{{Data_of_birth}}" data-age="{{Age}}" data-dept_id="{{Dept_id}}" Edit</a>
+
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ Doctor_id }}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <button onclick="window.print()">Print this page</button>
+
+  </div>
+  
+    <!-- Modal Add Patient-->
+      <form action="/savedoctor" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Doctor</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <div class="form-group">
+                   <input type="text" name="Doctor_id" class="form-control" placeholder="Doctor Id" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="specialization" class="form-control" placeholder="specialization" required>
+               </div>
+               
+               <div class="form-group">
+                   <input type="text" name="doctor_category" class="form-control" placeholder="Doctor_category " required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="employee_name" class="form-control" placeholder="Employee Name" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email_id" class="form-control" placeholder="EmailID" required>
+               </div>
+
+                <div class="form-group">
+                   <input type="text" name="number1" class="form-control" placeholder="Contact Number1" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="number2" class="form-control" placeholder="Contact Number2" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="salary" class="form-control" placeholder="Salary" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="dob" class="form-control" placeholder="DOB" required>
+               </div>
+
+                <div class="form-group">
+                   <input type="text" name="age" class="form-control" placeholder="Age" required>
+               </div>
+
+
+               <div class="form-group">
+                   <input type="text" name="dept_id" class="form-control" placeholder="Dept ID" required>
+               </div>
+               
+               
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+        <!-- Modal Update Product-->
+   <form action="/updatedoctor" method="post">
+       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Doctor</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="Doctor_id" class="form-control Doctor_id" placeholder="Doctor Id" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="employee_name" class="form-control employee_name" placeholder="Doctor Name" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="number1" class="form-control number1" placeholder="Contact Number" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email_id" class="form-control email_id" placeholder="Email ID" required>
+               </div>
+                <div class="form-group">
+                   <input type="text" name="salary" class="form-control salary" placeholder="Salary" required>
+               </div>
+               
+              <div class="form-group">
+                   <input type="text" name="doctor_category" class="form-control doctor_category" placeholder="Doctor category" required>
+               </div>
+               
+              
+             </div>
+            <div class="modal-footer">
+              <input type="hidden" name="id" class="product_id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+  </form>
+    
+      <!-- Modal Delete Product-->
+      <form id="add-row-form" action="/deletedoctor" method="post">
+         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="myModalLabel">Delete Patient</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   </div>
+                   <div class="modal-body">
+                        <strong>Are you sure to delete this data?</strong>
+                   </div>
+                   <div class="modal-footer">
+                        <input type="hidden" name="Doctor_id" class="form-control Doctor_id" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                   </div>
+                    </div>
+            </div>
+         </div>
+     </form>
+
+<script>
+    $(document).ready(function(){
+            //showing data to edit modal   
+        $('#mytable').on('click','.edit',function(){
+
+        var Doctor_id = $(this).data('id');
+         var Employee_name = $(this).data('employee_name');
+        var contact_number1  = $(this).data('number1');
+         var Email_id  = $(this).data('email_id');
+          var Salary  = $(this).data('salary');
+      
+        var Doctor_category  = $(this).data('doctor_category');
+
+
+
+       
+        $('#EditModal').modal('show');     
+        $('.Doctor_id').val(Doctor_id); 
+        $('.employee_name').val(Employee_name); 
+
+        $('.number1').val(contact_number1); 
+        $('.email_id').val(Email_id); 
+        $('.salary').val(Salary); 
+        $('.doctor_category').val(Doctor_category);
+
+
+       
+  
+      });
+            //showing delete record modal
+        $('#mytable').on('click','.delete',function(){
+        var Doctor_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.Doctor_id').val(Doctor_id);
+      });
+ 
+    });
+</script>
+
+</body>
+</html>

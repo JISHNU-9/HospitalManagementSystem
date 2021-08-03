@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hospital Management System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Display Bill</h2>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Search Bill</button>
+         <a class="btn btn-success" href="/allbills">All Bills</a>
+
+       
+
+   
+     
+    
+      
+      
+         
+        
+         
+         
+            
+            
+         
+        
+   
+
+  </div>
+  
+    <!-- Modal Add Patient-->
+      <form action="/displaybill" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Doctor</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <div class="form-group">
+                   <input type="text" name="bill_id" class="form-control" placeholder="Bill ID" required>
+               </div>
+             
+               
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Search</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+       
+        <button onclick="window.print()">Print this page</button>
+
+     
+
+</body>
+</html>
